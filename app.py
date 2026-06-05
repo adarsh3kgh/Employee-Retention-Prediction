@@ -162,6 +162,22 @@ with st.sidebar:
         </div>
         """, unsafe_allow_html=True)
     st.markdown("---")
+    st.markdown("### 🧭 Churn Profiles")
+    st.markdown("""
+<div style="font-size:0.78rem;color:#94a3b8;line-height:1.8">
+<b style="color:#ef4444">🚨 High Risk profile:</b><br>
+· Satisfaction &lt; 0.45<br>
+· Projects: 6–7 or just 2<br>
+· Hours &gt; 200/month<br>
+· Years: 4–6, no promotion<br><br>
+<b style="color:#10b981">✅ Low Risk profile:</b><br>
+· Satisfaction &gt; 0.65<br>
+· Projects: 3–4<br>
+· Hours: 150–180/month<br>
+· Recent promotion
+</div>
+""", unsafe_allow_html=True)
+    st.markdown("---")
     st.markdown("<div style='color:#475569;font-size:0.72rem;text-align:center'>Streamlit · XGBoost · Plotly</div>", unsafe_allow_html=True)
 
 # ─────────────────────────────────────────────
@@ -207,20 +223,20 @@ with tab_predict:
         st.markdown('<div class="section-header" style="margin-top:14px">Performance & Workload</div>', unsafe_allow_html=True)
 
         satisfaction_level = st.slider(
-            "😊 Satisfaction Level", 0.0, 1.0, 0.5, 0.01,
+            "😊 Satisfaction Level", 0.0, 1.0, 0.38, 0.01,
             help="0 = very dissatisfied · 1 = very satisfied"
         )
         last_evaluation = st.slider(
-            "⭐ Last Evaluation Score", 0.0, 1.0, 0.6, 0.01,
+            "⭐ Last Evaluation Score", 0.0, 1.0, 0.80, 0.01,
             help="Most recent performance score"
         )
 
         c1, c2 = st.columns(2)
         with c1:
-            number_project = st.number_input("📁 Projects", 1, 10, 3)
-            time_spend_company = st.number_input("🏢 Years at Company", 1, 10, 3)
+            number_project = st.number_input("📁 Projects", 1, 10, 5)
+            time_spend_company = st.number_input("🏢 Years at Company", 1, 10, 4)
         with c2:
-            average_montly_hours = st.number_input("⏱ Monthly Hours", 50, 350, 160)
+            average_montly_hours = st.number_input("⏱ Monthly Hours", 50, 350, 220)
 
         st.markdown('<div class="section-header" style="margin-top:14px">HR Attributes</div>', unsafe_allow_html=True)
         c1, c2, c3 = st.columns(3)
